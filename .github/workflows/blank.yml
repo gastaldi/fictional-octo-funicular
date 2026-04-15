@@ -18,7 +18,9 @@ jobs:
     steps:
       - name: Setup Java JDK
         uses: actions/setup-java@v5.2.0
-              
+        with:
+          java-version: '25'
+          distribution: temurin
       - uses: quarkusio/install-quarkus-snapshots-action@main
         with:
           repository: gastaldi/quarkus-ecosystem-ci
