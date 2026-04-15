@@ -25,4 +25,4 @@ jobs:
         with:
           repository: gastaldi/quarkus-ecosystem-ci
       - name: Verify Quarkus snapshots are installed
-        run: mvn dependency:get -Dartifact=io.quarkus:quarkus-core:999-SNAPSHOT
+        run: mvn dependency:get -Dartifact=io.quarkus:quarkus-core:999-SNAPSHOT -DremoteRepositories=local::default::file://${HOME}/.m2/repository
