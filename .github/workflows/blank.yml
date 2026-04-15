@@ -24,3 +24,5 @@ jobs:
       - uses: quarkusio/install-quarkus-snapshots-action@main
         with:
           repository: gastaldi/quarkus-ecosystem-ci
+      - name: Verify Quarkus snapshots are installed
+        run: mvn dependency:get -Dartifact=io.quarkus:quarkus-core:999-SNAPSHOT -o
