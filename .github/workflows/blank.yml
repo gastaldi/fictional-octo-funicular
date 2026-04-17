@@ -22,9 +22,11 @@ jobs:
           java-version: '25'
           distribution: temurin
       - uses: quarkusio/install-quarkus-snapshots-action@main
+        id: quarkus-install
         with:
           repository: gastaldi/quarkus-ecosystem-ci
-      - name: Verify Quarkus snapshots are installed
+  
+      - name: Verify If Quarkus ${{steps.quarkus-install.outputs.quarkus-version}} are installed
         run: |
-          mvn dependency:copy -Dartifact=io.quarkus:quarkus-core:999-SNAPSHOT -DoutputDirectory=/tmp/quarkus-verify -DremoteRepositories=local::default::file://${HOME}/.m2/repository
+          mvn dependency:copy -Dartifact=io.quarkus:quarkus-core:${{steps.quarkus-install.outputs.quarkus-version}} -DoutputDirectory=/tmp/quarkus-verify -DremoteRepositories=local::default::file://${HOME}/.m2/repository
           ls -la /tmp/quarkus-verify/
