@@ -21,10 +21,9 @@ jobs:
         with:
           java-version: '25'
           distribution: temurin
+
       - uses: quarkusio/install-quarkus-snapshots-action@main
         id: quarkus-install
-        with:
-          repository: gastaldi/quarkus-ecosystem-ci
   
       - name: Verify If Quarkus ${{steps.quarkus-install.outputs.quarkus-version}} are installed
         run: |
