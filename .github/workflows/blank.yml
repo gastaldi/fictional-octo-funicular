@@ -24,7 +24,18 @@ jobs:
 
       - uses: quarkusio/install-quarkus-snapshots-action@main
         id: quarkus-install
-  
+
+      - uses: quarkusio/install-quarkus-snapshots-action@main
+        id: quarkus-install-3-33
+        with:
+          branch: 3.33
+
+      - uses: quarkusio/install-quarkus-snapshots-action@main
+        id: quarkus-install-3-27
+        with:
+          branch: 3.27
+
+
       - name: Verify If Quarkus ${{steps.quarkus-install.outputs.quarkus-version}} are installed
         run: |
           mvn dependency:copy -Dartifact=io.quarkus:quarkus-core:${{steps.quarkus-install.outputs.quarkus-version}} -DoutputDirectory=/tmp/quarkus-verify -DremoteRepositories=local::default::file://${HOME}/.m2/repository
