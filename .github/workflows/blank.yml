@@ -40,3 +40,6 @@ jobs:
         run: |
           mvn dependency:copy -Dartifact=io.quarkus:quarkus-core:${{steps.quarkus-install.outputs.quarkus-version}} -DoutputDirectory=/tmp/quarkus-verify -DremoteRepositories=local::default::file://${HOME}/.m2/repository
           ls -la /tmp/quarkus-verify/
+
+      - uses: quarkusio/install-quarkus-snapshots-action/cleanup@main
+        if: always()
